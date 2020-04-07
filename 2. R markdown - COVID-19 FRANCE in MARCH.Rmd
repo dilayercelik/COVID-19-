@@ -37,6 +37,7 @@ ggplot(march_FR_C19, aes(x = day, y = n_new_cases))+
   theme_bw()+
   labs(x ="Day", y ="Number of New Cases", title ="Number of New Cases by Day throughout the Month of March (France, 2020)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
 ```
+SEE PLOT C
 
 
 ```{r}
@@ -47,7 +48,7 @@ ggplot(march_FR_C19, aes(x = day, y = n_new_deaths))+
   labs(x ="Day", y ="Number of New Deaths", title ="Number of New Deaths by Day throughout the Month of March (France, 2020)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
 
 ```
-
+SEE PLOT D
 
 
 
