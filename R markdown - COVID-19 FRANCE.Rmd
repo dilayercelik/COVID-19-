@@ -108,6 +108,7 @@ ggplot(summary_monthsFR, aes(x = reorder(month, -total_new_cases_month), y = tot
   labs(x ="Month", y ="Number of New Cases", title ="Number of New Cases by Month (January 2020 to April 2020 (01/04 - 07/04)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
          
 ```
+SEE PLOT A
 
 
 Plotting the number of new deaths recorded each month (January, February, March, 1st week of April - 2020):
@@ -118,7 +119,7 @@ ggplot(summary_monthsFR, aes(x = reorder(month, -total_new_deaths_month), y = to
   labs(x ="Month", y ="Number of New Deaths", title ="Number of New Deaths by Month (January 2020 to April 2020 (01/04 - 07/04)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
 
 ```
-
+SEE PLOT B
 
 Visually, we can straightforwardly notice that the number of new deaths during the first week of April solely is approximately the double of the number of new deaths recorded in the entire month of March (in France).
 
