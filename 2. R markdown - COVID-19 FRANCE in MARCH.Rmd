@@ -1,0 +1,57 @@
+---
+title: "March FR - COVID-19"
+author: "Dilay Ercelik"
+date: "07/04/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+AUTHOR : Dilay Ercelik (07/04/2020)
+
+This R Markdown visually presents the number of new cases and the number of new deaths by day, throughout the month of March (2020), in the country of France.
+
+The raw data (covid_19 dataset) comes from the European Centre for Disease Prevention and Control, available online at https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863 
+
+All other datasets originate from this initial extensive dataset.
+
+```{r}
+library(tidyverse)
+
+covid_19 <- read.csv("COVID-19-geographic-disbtribution-worldwide.csv")
+```
+
+```{r}
+march_FR_C19 <- france_19 %>% filter(month == "March")
+```
+
+```{r}
+ggplot(march_FR_C19, aes(x = day, y = n_new_cases))+ 
+  geom_line()+
+  geom_point(color = "red", size = 2)+
+  theme_bw()+
+  labs(x ="Day", y ="Number of New Cases", title ="Number of New Cases by Day throughout the Month of March (France, 2020)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
+```
+
+
+```{r}
+ggplot(march_FR_C19, aes(x = day, y = n_new_deaths))+ 
+  geom_line()+
+  geom_point(color = "red", size = 2)+
+  theme_bw()+
+  labs(x ="Day", y ="Number of New Deaths", title ="Number of New Deaths by Day throughout the Month of March (France, 2020)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
+
+```
+
+
+
+
+
+
+
+
