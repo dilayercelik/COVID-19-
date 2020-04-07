@@ -1,0 +1,127 @@
+---
+title: "R markdown COVID-19"
+author: "Dilay Ercelik"
+date: "07/04/2020"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+AUTHOR : Dilay Ercelik (07/04/2020)
+
+This R Markdown presents the number of new cases and the number of new deaths, from 31/12/19 to 07/04/20, in the country of France.This file includes some descriptive statistics (for each month during the delimited period), as well as visual representations.
+
+The raw data (covid_19 dataset) comes from the European Centre for Disease Prevention and Control, available online at https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863. 
+
+All other datasets originate from this initial extensive dataset.
+
+
+```{r}
+
+library(tidyverse)
+
+covid_19 <- read.csv("COVID-19-geographic-disbtribution-worldwide.csv")
+
+```
+
+
+
+Let's create a new dataset comprised of only the data from France:
+```{r}
+france_19 <- covid_19 %>% filter(countriesAndTerritories == "France") 
+```
+
+Let's do some little work on this new dataset:
+```{r}
+france_19 <- france_19 %>% mutate(id = row_number())
+
+```
+
+```{r}
+france_19 <- france_19 %>% rename(n_new_cases = cases)
+```
+
+
+```{r}
+france_19 <- france_19 %>% rename(n_new_deaths = deaths)
+```
+
+
+```{r}
+france_19 <- france_19 %>% select(-countriesAndTerritories, -countryterritoryCode)
+```
+
+```{r}
+france_19 <- france_19 %>% mutate(percentage_new_cases = (n_new_cases/popData2018)*100, percentage_new_deaths = (n_new_deaths/popData2018)*100)
+```
+
+```{r}
+france_19 <- france_19 %>% mutate(month = recode(month, "1" = "January", "2" = "February", "3" = "March", "4" = "April", "12" = "December"))
+```
+
+
+
+
+
+Let's calculate some descriptive and other interesting statistics on data separated by month (January 2020, February 2020, March 2020, 1-7 April 2020):
+
+```{r}
+january_summaryFR <- france_19 %>% filter(month == "January") %>% summarise(mean_new_cases_day = mean(n_new_cases), mean_new_deaths_day = mean(n_new_deaths), total_new_cases_month = sum(n_new_cases), total_new_deaths_month = sum(n_new_deaths), percentage_new_cases_month = sum(percentage_new_cases), percentage_new_deaths_month = sum(percentage_new_deaths))
+                                                            
+```
+
+```{r}
+february_summaryFR <- france_19 %>% filter(month == "February") %>% summarise(mean_new_cases_day = mean(n_new_cases), mean_new_deaths_day = mean(n_new_deaths), total_new_cases_month = sum(n_new_cases), total_new_deaths_month = sum(n_new_deaths), percentage_new_cases_month = sum(percentage_new_cases), percentage_new_deaths_month = sum(percentage_new_deaths))
+```
+
+```{r}
+march_summaryFR <- france_19 %>% filter(month == "March") %>% summarise(mean_new_cases_day = mean(n_new_cases), mean_new_deaths_day = mean(n_new_deaths), total_new_cases_month = sum(n_new_cases), total_new_deaths_month = sum(n_new_deaths),  percentage_new_cases_month = sum(percentage_new_cases), percentage_new_deaths_month = sum(percentage_new_deaths))
+```
+
+```{r}
+first_week_april_summaryFR <- france_19 %>% filter(month == "April") %>% summarise(mean_new_cases_day = mean(n_new_cases), mean_new_deaths_day = mean(n_new_deaths), total_new_cases_month = sum(n_new_cases), total_new_deaths_month = sum(n_new_deaths), percentage_new_cases_month = sum(percentage_new_cases), percentage_new_deaths_month = sum(percentage_new_deaths))
+```
+
+
+Let's bind the summary data from the 4 previous datasets (by month) to implement helpful visual representations:
+```{r}
+summary_monthsFR <- bind_rows(january_summaryFR, february_summaryFR, march_summaryFR, first_week_april_summaryFR)
+```
+
+```{r}
+summary_monthsFR <- summary_monthsFR %>% mutate(month = c("January", "February", "March", "April (1-7)"))
+```
+
+
+Plotting the number of new cases recorded each month (January, February, March, 1st week of April - 2020):
+```{r}
+ggplot(summary_monthsFR, aes(x = reorder(month, -total_new_cases_month), y = total_new_cases_month))+ 
+  geom_bar(stat = "identity", color = "red")+
+  theme_classic()+
+  labs(x ="Month", y ="Number of New Cases", title ="Number of New Cases by Month (January 2020 to April 2020 (01/04 - 07/04)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
+         
+```
+
+
+Plotting the number of new deaths recorded each month (January, February, March, 1st week of April - 2020):
+```{r}
+ggplot(summary_monthsFR, aes(x = reorder(month, -total_new_deaths_month), y = total_new_deaths_month))+ 
+  geom_bar(stat = "identity", color = "red")+
+  theme_classic()+
+  labs(x ="Month", y ="Number of New Deaths", title ="Number of New Deaths by Month (January 2020 to April 2020 (01/04 - 07/04)", subtitle = "Data from the European Centre for Disease Prevention and Control ")
+
+```
+
+
+Visually, we can straightforwardly notice that the number of new deaths during the first week of April solely is approximately the double of the number of new deaths recorded in the entire month of March (in France).
+
+The number of new deaths recorded in March corresponds to 51.33 %  of the number of new deaths recorded during the first week of April 2020 (01/04 to 07/04), or precisely to 3022/5887.
+
+
