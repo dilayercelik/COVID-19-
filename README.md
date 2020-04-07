@@ -2,7 +2,7 @@
 
 Hi! I'm an undergraduate first-year student in psychology and language sciences at UCL. 
 
-This year, I discovered R, a programming language, and since then, I've been trying to learn as much as I can, about data science especially.
+This year, I discovered the programming language R, and since then, I've been trying to learn as much as I can, about data science especially.
 
 Given the current COVID-19 situation, and my newly found interest, why not get my hands dirty with some COVID-19 data?
 
