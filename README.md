@@ -1,4 +1,4 @@
-# COVID-19-
+# COVID-19-FRANCE
 
 Hi! I'm an undergraduate first-year student in psychology and language sciences at UCL. 
 
