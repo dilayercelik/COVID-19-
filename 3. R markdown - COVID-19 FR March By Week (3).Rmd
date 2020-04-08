@@ -1,0 +1,202 @@
+---
+title: "R markdown - COVID-19 FRANCE in MARCH Week 1"
+author: "Dilay Ercelik"
+date: "07/04/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+AUTHOR: DILAY ERCELIK
+
+This R markdown visually presents the number of new cases and the number of new deaths, by week, throughout the month of March, in the country of France.
+
+The raw data (covid_19 dataset) comes from the European Centre for Disease Prevention and Control, available online at https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863. 
+
+All other datasets originate from this initial extensive dataset.
+
+
+```{r}
+library(tidyverse)
+
+covid_19 <- read.csv("COVID-19-geographic-disbtribution-worldwide.csv")
+
+
+march_FR_C19 <- france_19 %>% filter(month == "March")
+```
+
+
+```{r}
+march_FR_week_1 <- march_FR_C19 %>% filter(day == "1" | day == "2" | day == "3" | day == "4" | day == "5" | day == "6" | day == "7")
+
+march_FR_week_2 <- march_FR_C19 %>% filter(day == "8" | day == "9" | day == "10" | day == "11" | day == "12" | day == "13" | day == "14")
+
+march_FR_week_3 <- march_FR_C19 %>% filter(day == "15" | day == "16" | day == "17" | day == "18" | day == "19" | day == "20" | day == "21")
+
+march_FR_week_4 <- march_FR_C19 %>% filter(day == "22" | day == "23" | day == "24" | day == "25" | day == "26" | day == "27" | day == "28")
+
+march_FR_end <- march_FR_C19 %>% filter(day == "29" | day == "30" | day == "31")
+```
+
+
+
+***WEEK 1
+
+PLOT E: Number of New Cases Recorded during the First Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_1, aes(x = day, y= n_new_cases))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 1:7)+
+  labs(x = "Day of March (Week 1)", y = "Number of New Cases (FRANCE)", title = "Number of New Cases Recorded during the First Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT E
+
+
+PLOT F: Number of New Deaths Recorded during the First Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_1, aes(x = day, y= n_new_deaths))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 1:7)+
+  labs(x = "Day of March (Week 1)", y = "Number of New Deaths (FRANCE)", title = "Number of New Deaths Recorded during the First Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT F
+
+
+
+***WEEK 2
+
+PLOT G:  Number of New Cases Recorded during the Second Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_2, aes(x = day, y= n_new_cases))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 8:14)+
+  labs(x = "Day of March (Week 2)", y = "Number of New Cases (FRANCE)", title = "Number of New Cases Recorded during the Second Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT G
+
+
+
+PLOT H: Number of New Deaths Recorded during the Second Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_2, aes(x = day, y= n_new_deaths))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 8:14)+
+  labs(x = "Day of March (Week 2)", y = "Number of New Deaths (FRANCE)", title = "Number of New Deaths Recorded during the Second Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT H
+
+
+
+***WEEK 3
+
+PLOT I: Number of New Cases Recorded during the Third Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_3, aes(x = day, y= n_new_cases))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 15:21)+
+  labs(x = "Day of March (Week 3)", y = "Number of New Cases (FRANCE)", title = "Number of New Cases Recorded during the Third Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT I
+
+
+
+PLOT J: Number of New Deaths Recorded during the Fourth Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_3, aes(x = day, y= n_new_deaths))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 15:21)+
+  labs(x = "Day of March (Week 3)", y = "Number of New Deaths (FRANCE)", title = "Number of New Deaths Recorded during the Third Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT J
+
+
+
+***WEEK 4
+
+PLOT K: Number of New Cases Recorded during the Fourth Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_4, aes(x = day, y= n_new_cases))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 22:28)+
+  labs(x = "Day of March (Week 4)", y = "Number of New Cases (FRANCE)", title = "Number of New Cases Recorded during the Fourth Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT K
+
+
+
+PLOT L: Number of New Deaths Recorded during the Fourth Week of March (2020) in France
+```{r}
+ggplot(march_FR_week_4, aes(x = day, y= n_new_deaths))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 22:28)+
+  labs(x = "Day of March (Week 4)", y = "Number of New Deaths (FRANCE)", title = "Number of New Deaths Recorded during the Fourth Week of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT L
+
+
+
+*END OF MARCH (29-31)
+
+
+PLOT M: Number of New Cases Recorded during the Last Days of March (2020) in France (29/03 - 31/03)
+```{r}
+ggplot(march_FR_end, aes(x = day, y= n_new_cases))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 29:31)+
+  labs(x = "Day of March (End)", y = "Number of New Cases (FRANCE)", title = "Number of New Cases Recorded During Last Days of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT M 
+
+
+PLOT N: Number of New Deaths Recorded during the Last Days of March (2020) in France
+```{r}
+ggplot(march_FR_end, aes(x = day, y= n_new_deaths))+
+  geom_line(colour = "red")+
+  geom_point(colour = "red", size = 3)+
+  theme_classic()+
+  scale_x_discrete(limits = 29:31)+
+  labs(x = "Day of March (End)", y = "Number of New Deaths (FRANCE)", title = "Number of New Deaths Recorded during Last Days of March (2020)", subtitle = "Data from the European Centre for Disease Prevention and Control")
+```
+SEE PLOT N
+
+
+
+
+```{r}
+library(openxlsx)
+
+write.xlsx(march_FR_week_1, "march_FR_week_1.xlsx")
+
+write.xlsx(march_FR_week_2, "march_FR_week_2.xlsx")
+
+write.xlsx(march_FR_week_3, "march_FR_week_3.xlsx")
+
+write.xlsx(march_FR_week_4, "march_FR_week_4.xlsx")
+
+write.xlsx(march_FR_end, "march_FR_end.xlsx")
+```
+
