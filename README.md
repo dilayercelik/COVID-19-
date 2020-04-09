@@ -1,6 +1,6 @@
 # COVID-19-FRANCE
 
-Hi! I'm an undergraduate first-year student in psychology and language sciences at UCL. 
+Hi! I'm a first-year undergraduate student in psychology and language sciences at UCL. 
 
 This year, I discovered the programming language R, and since then, I've been trying to learn as much as I can, about data science especially.
 
