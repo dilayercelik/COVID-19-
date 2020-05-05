@@ -2,7 +2,7 @@
 
 This repository consists of some visualisation works (in R Studio) on cleaned and changed "COVID-19" data, downloaded from the European Union Open Data Portal (source: [available here](https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863))
 
-# COVID-19 in France (January - February - March - April/1st week)
+# COVID-19 in France (January - February - March - April)
 
 The files included in this repository are works on data focusing on some COVID-19 figures in France, spanning the period from the 31st of December 2019 to the first week of April 2020.
 
