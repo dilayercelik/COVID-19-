@@ -1,7 +1,8 @@
 # COVID-19-FRANCE
+This repository consists of some visualisation works (in R Studio) on cleaned and changed "COVID-19" data, downloaded from the European Union Open Data Portal (source: [available here](https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863))
+
 ![Number of New Cases by Month in France](covid19-4689908.jpg)
 
-This repository consists of some visualisation works (in R Studio) on cleaned and changed "COVID-19" data, downloaded from the European Union Open Data Portal (source: [available here](https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data/resource/55e8f966-d5c8-438e-85bc-c7a5a26f4863))
 
 # COVID-19 in France (January - February - March - April)
 
