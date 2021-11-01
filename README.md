@@ -7,9 +7,9 @@ This repository consists of some visualisation works (in R Studio) on COVID-19 d
 # COVID-19 in France 
 ## January - February - March - April 2020
 
-The files included in this repository are works on data focusing on some COVID-19 figures in France, spanning the period from the 31st of December 2019 to the first week of April 2020.
+The files included in this repository contain amateur work with data focusing on some COVID-19 figures in France, spanning the period between the 31st of December 2019 and the first week of April 2020.
 
-Those figures include the number of new cases and new deaths registered in the territory of France and in different timespans.
+These figures include the number of new cases and new deaths registered in the territory of France, in different time periods.
 
 
 # The European Union Open Data Portal
