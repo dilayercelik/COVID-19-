@@ -4,7 +4,8 @@ This repository consists of some visualisation works (in R Studio) on COVID-19 d
 ![Number of New Cases by Month in France](covid19-4689908.jpg)
 
 
-# COVID-19 in France (January - February - March - April)
+# COVID-19 in France 
+## January - February - March - April
 
 The files included in this repository are works on data focusing on some COVID-19 figures in France, spanning the period from the 31st of December 2019 to the first week of April 2020.
 
